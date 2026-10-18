@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .bg{fill:#FFF0D7}.mark{fill:#F7150B}
+    @media (prefers-color-scheme:dark){.bg{fill:#F7150B}.mark{fill:#FFF0D7}}
+  </style>
+  <rect class="bg" width="64" height="64"/>
+  <g class="mark" transform="translate(9.9 8) scale(1)"><path d="M28.99,48v-18.2h-13.75v18.2H0V0h15.24v17.06h13.75V0h15.24v48h-15.24Z"/></g>
+</svg>
