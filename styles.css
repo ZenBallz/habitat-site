@@ -718,7 +718,7 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
 .footer__col { display: flex; flex-direction: column; }
 .footer__h { margin-bottom: 20px; }
 
-.footer__mark { width: 100%; height: auto; margin-top: 120px; }
+.footer__mark { width: auto; height: 20px; margin-bottom: 20px; margin-right: auto; }
 
 .footer__legal {
   margin-top: 40px;
@@ -868,7 +868,19 @@ dialog[open] { animation: fade .3s ease-out both; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gap);
 }
-.pdialog__thumbs > * { display: flex; width: 100%; height: 100%; object-fit: cover; }
+/* Absolutely placed, so no photo can push the row taller — upright or landscape */
+.pdialog__thumbs { position: relative; }
+.pdialog__thumbs > * {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  width: calc(50% - var(--gap) / 2);
+  height: 100%;
+  object-fit: cover;
+}
+.pdialog__thumbs > :nth-child(1) { left: 0; }
+.pdialog__thumbs > :nth-child(2) { right: 0; }
 
 /* … and the text below them, starting at the middle of the screen */
 .pdialog__body { grid-template-rows: auto auto 1fr; }
@@ -909,7 +921,7 @@ dialog[open] { animation: fade .3s ease-out both; }
   .pdialog__tag { order: -1; text-align: left; margin-bottom: -8px; }
   .pdialog__thumbs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
   .pdialog__thumbs { height: auto; min-height: 0; }
-  .pdialog__thumbs > * { height: auto; aspect-ratio: 2 / 3; }
+  .pdialog__thumbs > * { position: static; width: 100%; height: auto; aspect-ratio: 2 / 3; }
 
   .pdialog__nav { display: flex; justify-content: space-between; padding: 12px 0; }
   .pdialog__nav .btn { padding: 0 16px; }
