@@ -19,7 +19,7 @@
   --ph: #f4e2c1;            /* image placeholder fill */
 
   --sans: "neue-haas-unica", "Neue Haas Unica", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: "degular-mono", "Degular Mono", "Space Mono", "Courier New", monospace;
+  --mono: "degular-mono", "Degular Mono", ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 
   --frame: 6px;             /* red viewport frame, all four sides */
   --pad: 72px;              /* inner margin: frame + pad = 78px to content */
@@ -1036,4 +1036,89 @@ dialog[open] { animation: fade .3s ease-out both; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+
+/* --------------------------------------------------------------------------
+   21. Footer privacy links, project note, legal pages
+   -------------------------------------------------------------------------- */
+
+.footer__privacy { display: flex; flex-wrap: wrap; column-gap: 16px; }
+.footer__btn,
+.legal__btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.footer__btn:hover { color: #fff; }
+.legal__btn { text-decoration: underline; text-underline-offset: 3px; }
+
+.projects__note { margin-top: 60px; max-width: 46em; font-size: 15px; line-height: 20px; font-weight: 400; color: var(--blue); }
+.projects__note a { text-decoration: underline; text-underline-offset: 3px; }
+
+.top__back { margin-left: auto; transition: color .2s; }
+.top__back:hover { color: var(--blue); }
+
+.legal { padding-top: calc(var(--frame) + var(--top) + 96px); }
+.legal__sub { color: var(--blue); }
+.legal__block { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); align-items: start; }
+.legal__block:first-of-type { margin-top: 80px; }
+.legal__text p + p { margin-top: 12px; }
+.legal__text a { text-decoration: underline; text-underline-offset: 3px; }
+.legal__text a:hover { color: var(--blue); }
+
+@media (max-width: 760px) {
+  .projects__note { margin-top: 40px; }
+  .page-legal { padding-bottom: 0; }
+  .top__back { font-size: 13px; letter-spacing: 0.06em; }
+  .legal { padding-top: 48px; }
+  .legal__block { margin-top: 32px; }
+  .legal__block:first-of-type { margin-top: 48px; }
+  .legal__block .label { margin-bottom: 12px; }
+}
+
+
+/* --------------------------------------------------------------------------
+   22. Fonts consent notice (Adobe Fonts load only after "Load fonts")
+   -------------------------------------------------------------------------- */
+
+.consent {
+  position: fixed;
+  left: calc(var(--frame) + 48px);
+  bottom: calc(var(--frame) + 24px);
+  z-index: 80;
+  width: min(420px, calc(100vw - var(--frame) * 2 - 72px));
+  padding: 20px;
+  border: 1px solid var(--red);
+  background: var(--cream);
+  color: var(--red);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  animation: rise .4s var(--ease) both;
+}
+.consent[hidden] { display: none; }
+.consent__title { margin-bottom: 8px; }
+.consent a { text-decoration: underline; text-underline-offset: 3px; }
+.consent__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.consent__actions .btn { padding: 0 16px; }
+.consent .btn--solid { background: var(--red); border-color: var(--red); color: var(--cream); }
+.consent .btn--solid:hover { background: var(--blue); border-color: var(--blue); }
+
+@media (max-width: 760px) {
+  .consent {
+    left: var(--frame);
+    right: var(--frame);
+    bottom: var(--cta);
+    width: auto;
+    border-width: 1px 0 0;
+    padding: 16px 18px;
+  }
+  .page-legal .consent { bottom: var(--frame); }
+  .consent__actions .btn { flex: 1; }
 }

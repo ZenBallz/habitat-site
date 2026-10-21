@@ -424,4 +424,93 @@
     updateTop();
   }
 
+
+
+  /* ------------------------------------------------------------------------
+     Fonts consent — Adobe Fonts load only after "Load fonts".
+     The choice is kept for six months in localStorage ("habitat-fonts");
+     the inline script in <head> loads the fonts on later visits.
+     Any element with [data-privacy-settings] reopens the notice.
+     ------------------------------------------------------------------------ */
+
+  (function () {
+    var KEY = "habitat-fonts";
+    var SIX_MONTHS = 15768000000;
+    var de = (document.documentElement.lang || "").indexOf("de") === 0;
+    var privacyLink = document.querySelector("[data-privacy-link]");
+    var privacyHref = privacyLink ? privacyLink.getAttribute("href") : (de ? "datenschutz/" : "privacy/");
+    var T = de ? {
+      title: "Schriften",
+      text: "Unsere Schriften kommen von Adobe Fonts. Beim Laden wird Ihre IP-Adresse an Adobe übermittelt, auch in die USA. Ohne Ihre Zustimmung zeigen wir Systemschriften.",
+      more: "Datenschutzerklärung",
+      yes: "Schriften laden",
+      no: "Systemschriften verwenden",
+      label: "Datenschutzeinstellungen"
+    } : {
+      title: "Fonts",
+      text: "Our typefaces come from Adobe Fonts. Loading them sends your IP address to Adobe, including in the USA. Without your consent, we show system fonts.",
+      more: "Privacy policy",
+      yes: "Load fonts",
+      no: "Use system fonts",
+      label: "Privacy settings"
+    };
+
+    function read() {
+      try {
+        var c = JSON.parse(localStorage.getItem(KEY) || "null");
+        if (c && Date.now() - c.t < SIX_MONTHS) return c.v;
+      } catch (e) {}
+      return null;
+    }
+    function save(v) {
+      try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {}
+    }
+    function loadFonts() {
+      if (document.getElementById("adobe-fonts")) return;
+      var l = document.createElement("link");
+      l.rel = "stylesheet";
+      l.id = "adobe-fonts";
+      l.href = "https://use.typekit.net/uzy3lzg.css";
+      document.head.appendChild(l);
+    }
+    function unloadFonts() {
+      var l = document.getElementById("adobe-fonts");
+      if (l) l.parentNode.removeChild(l);
+    }
+
+    var box = document.createElement("section");
+    box.className = "consent";
+    box.setAttribute("aria-label", T.label);
+    box.hidden = true;
+    box.innerHTML =
+      '<p class="label consent__title">' + T.title + '</p>' +
+      '<p>' + T.text + ' <a href="' + privacyHref + '">' + T.more + '</a></p>' +
+      '<div class="consent__actions">' +
+        '<button type="button" class="btn btn--solid" data-fonts="yes">' + T.yes + '</button>' +
+        '<button type="button" class="btn" data-fonts="no">' + T.no + '</button>' +
+      '</div>';
+    document.body.appendChild(box);
+
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-fonts]");
+      if (!b) return;
+      var v = b.getAttribute("data-fonts");
+      save(v);
+      if (v === "yes") loadFonts(); else unloadFonts();
+      box.hidden = true;
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("[data-privacy-settings]")) return;
+      e.preventDefault();
+      box.hidden = false;
+      var first = box.querySelector("button");
+      if (first) first.focus();
+    });
+
+    var choice = read();
+    if (choice === "yes") loadFonts();
+    else if (choice === null) box.hidden = false;
+  })();
+
 })();

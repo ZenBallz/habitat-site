@@ -17,8 +17,8 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="alternate" hreflang="en" href="./">
 <link rel="alternate" hreflang="de" href="de/">
-<link rel="preconnect" href="https://use.typekit.net" crossorigin>
-<link rel="stylesheet" href="https://use.typekit.net/uzy3lzg.css">
+<!-- Adobe Fonts load only after consent (see main.js, "Fonts consent"); otherwise system fonts are used -->
+<script>(function(){try{var c=JSON.parse(localStorage.getItem("habitat-fonts")||"null");if(c&&c.v==="yes"&&Date.now()-c.t<15768000000){var l=document.createElement("link");l.rel="stylesheet";l.id="adobe-fonts";l.href="https://use.typekit.net/uzy3lzg.css";document.head.appendChild(l);}}catch(e){}})();</script>
 <link rel="stylesheet" href="styles.css">
 <script src="main.js" defer></script>
 </head>
@@ -266,6 +266,7 @@
         <button class="btn" type="button" data-more>Show more projects</button>
         <p class="label meta" aria-live="polite"><span data-count>4</span> of <span data-total>14</span></p>
       </div>
+      <p class="g-24 projects__note">The projects presented here reflect the professional experience of Anna Neitzel (formerly Cheprakova) and her teams, including work undertaken through RUPOR. Rights in third-party images, architecture, designs and trademarks remain with their holders. <a href="legal-notice/#image-rights">Image rights</a></p>
     </div>
   </div>
 </section>
@@ -561,8 +562,8 @@
 
     <div class="grid footer__legal">
       <p>© 2026 HABITAT</p>
-      <a href="#"><!-- TODO /de/impressum/ -->Impressum</a>
-      <a href="#"><!-- TODO /de/datenschutz/ -->Privacy</a>
+      <a href="legal-notice/">Legal notice</a>
+      <p class="footer__privacy"><a href="privacy/" data-privacy-link>Privacy policy</a><button type="button" class="footer__btn" data-privacy-settings>Privacy settings</button></p>
       <p class="footer__lang"><a href="./" aria-current="page">EN</a> / <a href="de/" lang="de" hreflang="de">DE</a></p>
     </div>
   </div>
@@ -666,7 +667,7 @@
           </div>
 
           <div class="cform__foot">
-            <p class="small">We use these details only to reply to your request. <a href="#"><!-- TODO /de/datenschutz/ -->Privacy notice</a></p>
+            <p class="small">We use your details to respond to your enquiry and contact you about it. The form is processed through Formspree, which involves transferring data to the USA. Please see our <a href="privacy/">Privacy Policy</a> for further information.</p>
             <button class="btn btn--fill" type="submit">Send request</button>
           </div>
           <p class="label field__err cform__fail" role="alert" hidden>Something went wrong. Please write to anna@habitat-marketing.com instead.</p>
