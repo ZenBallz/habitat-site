@@ -16,6 +16,14 @@
      Dialog helpers (native <dialog>: Esc closes, focus is trapped)
      ------------------------------------------------------------------------ */
 
+  // Focus rings show only for keyboard users: Tab turns them on, any click/tap turns them off
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Tab") document.documentElement.classList.add("kb");
+  });
+  document.addEventListener("pointerdown", function () {
+    document.documentElement.classList.remove("kb");
+  });
+
   function openDialog(dialog, opener) {
     if (!dialog || dialog.open) return;
     dialog._opener = opener || document.activeElement;
@@ -385,12 +393,10 @@
 
 
   /* ------------------------------------------------------------------------
-     Top bar — current section: blue nav link (desktop), section name in
-     place of the logo once past the hero (mobile)
+     Top bar — current section: blue nav link (desktop)
      ------------------------------------------------------------------------ */
 
   var top = $(".top");
-  var topSection = $(".top__section");
   var navLinks = $$(".top__nav a");
   var sections = $$("[data-section]");
   var ticking = false;
@@ -403,11 +409,8 @@
       if (sections[i].getBoundingClientRect().top <= line) current = sections[i];
       else break;
     }
-    var name = current ? current.getAttribute("data-section") : "";
     var id = current ? (current.id || current.getAttribute("data-nav") || "") : "";
 
-    top.classList.toggle("is-section", !!name);
-    if (topSection.textContent !== name) topSection.textContent = name;
 
     navLinks.forEach(function (a) {
       var on = !!id && a.getAttribute("href") === "#" + id;
@@ -416,7 +419,7 @@
     });
   }
 
-  if (top && topSection && sections.length) {
+  if (top && sections.length) {
     window.addEventListener("scroll", function () {
       if (!ticking) { ticking = true; window.requestAnimationFrame(updateTop); }
     }, { passive: true });

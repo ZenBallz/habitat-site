@@ -77,6 +77,8 @@ button { font: inherit; letter-spacing: inherit; }
 .ground-blue :focus-visible,
 .ground-red :focus-visible,
 .ground-blue:focus-visible { outline-color: var(--cream); }
+/* Focus rings only while navigating with the Tab key (html.kb, set in main.js) */
+html:not(.kb) :focus-visible { outline: none; }
 
 .skip {
   position: absolute;
@@ -268,7 +270,6 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
 
 .top__home { display: flex; align-items: center; min-width: 0; height: 44px; }
 .top__logo { width: auto; height: 22px; }
-.top__section { display: none; color: var(--blue); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .top__nav { display: flex; gap: 48px; margin-left: auto; }
 .top__nav a { transition: color .2s; }
@@ -348,8 +349,6 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
   .top__logo { height: 18px; }
   .top__nav, .top__lang { display: none; }
   .top__menu { display: flex; }
-  .top.is-section .top__logo { display: none; }
-  .top.is-section .top__section { display: block; }
 
   /* Mobile: the rail becomes the bottom edge of the frame */
   .rail {
@@ -597,6 +596,8 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
 .nextstep .btn { width: 100%; }
 
 .section--how { padding-bottom: 0; }
+/* FAQ and Kontakt share the cream ground: one section gap between them, not two */
+.section--contact { padding-top: 0; }
 .how { margin-top: 60px; align-items: start; }
 .how__col { border-top: 1px solid var(--red); padding-top: 20px; }
 .how__col .label + p { margin-top: 20px; }
@@ -726,7 +727,6 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
   border-top: 1px solid var(--cream);
   align-items: baseline;
 }
-.footer__lang { justify-self: end; }
 
 @media (max-width: 1100px) {
   .footer { font-size: 13px; letter-spacing: 0.06em; }
@@ -737,12 +737,14 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
   .footer__cols,
   .footer__legal { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer__cols { row-gap: 32px; }
+  /* Kontakt full width, then Folgen | Seite side by side, logo + address last */
   .footer__contact { grid-column: 1 / -1; order: -1; }
-  .footer__page { grid-column: 1 / -1; }
+  .footer__studio { grid-column: 1 / -1; order: 1; }
+  .footer__page { grid-column: 1; grid-row: 2; }
+  .footer__follow { grid-column: 2; grid-row: 2; }
   .footer__h { margin-bottom: 12px; }
-  .footer__mark { margin-top: 64px; }
+  .footer__mark { margin-top: 24px; }
   .footer__legal { margin-top: 24px; padding-top: 16px; row-gap: 8px; }
-  .footer__legal > :nth-child(even) { justify-self: end; }
 }
 
 
@@ -1043,7 +1045,15 @@ dialog[open] { animation: fade .3s ease-out both; }
    21. Footer privacy links, project note, legal pages
    -------------------------------------------------------------------------- */
 
-.footer__privacy { display: flex; flex-wrap: wrap; column-gap: 16px; }
+.footer__end { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+@media (max-width: 760px) {
+  /* Mobile legal row: © and EN/DE on top, then one link per line */
+  .footer__end { display: contents; }
+  .footer__legal > *,
+  .footer__end > * { grid-column: 1 / -1; justify-self: start; text-align: left; }
+  .footer__legal > :first-child { grid-column: 1; grid-row: 1; }
+  .footer__end .footer__lang { grid-column: 2; grid-row: 1; justify-self: end; }
+}
 .footer__btn,
 .legal__btn {
   padding: 0;
