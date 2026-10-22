@@ -1106,7 +1106,7 @@ dialog[open] { animation: fade .3s ease-out both; }
 .consent__title { margin-bottom: 8px; }
 .consent a { text-decoration: underline; text-underline-offset: 3px; }
 .consent__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
-.consent__actions .btn { padding: 0 16px; }
+.consent__actions .btn { flex: 1; padding: 0 16px; }
 .consent .btn--solid { background: var(--red); border-color: var(--red); color: var(--cream); }
 .consent .btn--solid:hover { background: var(--blue); border-color: var(--blue); }
 

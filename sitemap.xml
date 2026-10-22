@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://habitat-marketing.com/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habitat-marketing.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://habitat-marketing.com/de/"/>
+  </url>
+  <url>
+    <loc>https://habitat-marketing.com/de/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habitat-marketing.com/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://habitat-marketing.com/de/"/>
+  </url>
+  <url>
+    <loc>https://habitat-marketing.com/legal-notice/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habitat-marketing.com/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://habitat-marketing.com/de/impressum/"/>
+  </url>
+  <url>
+    <loc>https://habitat-marketing.com/de/impressum/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habitat-marketing.com/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://habitat-marketing.com/de/impressum/"/>
+  </url>
+  <url>
+    <loc>https://habitat-marketing.com/privacy/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habitat-marketing.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://habitat-marketing.com/de/datenschutz/"/>
+  </url>
+  <url>
+    <loc>https://habitat-marketing.com/de/datenschutz/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://habitat-marketing.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://habitat-marketing.com/de/datenschutz/"/>
+  </url>
+</urlset>

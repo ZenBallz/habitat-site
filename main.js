@@ -440,18 +440,18 @@
     var privacyLink = document.querySelector("[data-privacy-link]");
     var privacyHref = privacyLink ? privacyLink.getAttribute("href") : (de ? "datenschutz/" : "privacy/");
     var T = de ? {
-      title: "Schriften",
-      text: "Unsere Schriften kommen von Adobe Fonts. Beim Laden wird Ihre IP-Adresse an Adobe übermittelt, auch in die USA. Ohne Ihre Zustimmung zeigen wir Systemschriften.",
+      title: "Datenschutz",
+      text: "Wir nutzen Adobe Fonts für unsere Schriften. Dabei wird Ihre IP-Adresse an Adobe übermittelt, auch in die USA. Wenn Sie ablehnen, zeigen wir Standardschriften.",
       more: "Datenschutzerklärung",
-      yes: "Schriften laden",
-      no: "Systemschriften verwenden",
+      yes: "Akzeptieren",
+      no: "Ablehnen",
       label: "Datenschutzeinstellungen"
     } : {
-      title: "Fonts",
-      text: "Our typefaces come from Adobe Fonts. Loading them sends your IP address to Adobe, including in the USA. Without your consent, we show system fonts.",
+      title: "Privacy",
+      text: "We use Adobe Fonts for our typefaces. This sends your IP address to Adobe, including in the USA. If you decline, we show standard fonts.",
       more: "Privacy policy",
-      yes: "Load fonts",
-      no: "Use system fonts",
+      yes: "Accept",
+      no: "Decline",
       label: "Privacy settings"
     };
 
@@ -486,7 +486,7 @@
       '<p class="label consent__title">' + T.title + '</p>' +
       '<p>' + T.text + ' <a href="' + privacyHref + '">' + T.more + '</a></p>' +
       '<div class="consent__actions">' +
-        '<button type="button" class="btn btn--solid" data-fonts="yes">' + T.yes + '</button>' +
+        '<button type="button" class="btn" data-fonts="yes">' + T.yes + '</button>' +
         '<button type="button" class="btn" data-fonts="no">' + T.no + '</button>' +
       '</div>';
     document.body.appendChild(box);
