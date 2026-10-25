@@ -228,6 +228,9 @@ html:not(.kb) :focus-visible { outline: none; }
 .btn--blue { background: var(--blue); border-color: var(--blue); color: var(--cream); }
 .btn--blue:hover { background: var(--red); border-color: var(--red); }
 
+.btn--red { background: var(--red); border-color: var(--red); color: var(--cream); }
+.btn--red:hover { background: transparent; border-color: var(--red); color: var(--red); }
+
 .btn--fill { background: var(--cream); border-color: var(--cream); color: var(--blue); }
 .btn--fill:hover { background: var(--red); border-color: var(--red); color: var(--cream); }
 

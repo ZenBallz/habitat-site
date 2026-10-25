@@ -6,7 +6,8 @@ Preview locally with VS Code Live Server (or `python3 -m http.server` in this fo
 
 ## Files
 
-- `index.html` — the whole page, sections in order (01 Hero … 09 Footer), plus the three dialogs at the bottom (menu, project detail, request a call)
+- `index.html` — German home page (primary, at `/`); `en/index.html` — English version at `/en/`. Legal pages: `impressum/`, `datenschutz/`, `en/legal-notice/`, `en/privacy/`. The old `/de/…`, `/legal-notice/` and `/privacy/` URLs are small redirect pages.
+- Each home page holds the whole page, sections in order (01 Hero … 09 Footer), plus the three dialogs at the bottom (menu, project detail, request a call)
 - `styles.css` — all styles, one file, numbered sections in page order. Tablet ≤ 1100px, mobile ≤ 760px
 - `main.js` — dialogs, project reveal, plans toggle, FAQ, mobile bar section label
 - `thank-you.html` — optional fallback page for the form
@@ -49,7 +50,6 @@ Until the ID is filled in, the form pretends to send (same on localhost), so you
 - Project photos: replace `<span class="ph …">` with `<img>` (card 4:3; dialog: one landscape + two 3:4)
 - Phone number (footer), Instagram and LinkedIn URLs
 - Impressum and privacy pages, and the privacy link in the form
-- German version at `/de/` — the DE links point to `#` until it exists
 - `og:image` → absolute URL once the domain is set
 
 ## Images
