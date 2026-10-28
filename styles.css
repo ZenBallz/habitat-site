@@ -410,7 +410,7 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
   .hero__title { margin-top: 48px; }
   .hero__intro .g-12 { grid-column: 1; }
   .hero__meta { margin-top: 20px; text-align: left; font-size: 13px; letter-spacing: 0.06em; }
-  .hero__img { height: auto; aspect-ratio: 16 / 9; margin-top: 32px; object-position: 72% center; }
+  .hero__img { height: auto; aspect-ratio: 16 / 9; margin-top: 32px; object-position: center; }
 }
 
 
