@@ -410,7 +410,7 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
   .hero__title { margin-top: 48px; }
   .hero__intro .g-12 { grid-column: 1; }
   .hero__meta { margin-top: 20px; text-align: left; font-size: 13px; letter-spacing: 0.06em; }
-  .hero__img { height: auto; aspect-ratio: 4 / 5; margin-top: 32px; object-position: 72% center; }
+  .hero__img { height: auto; aspect-ratio: 16 / 9; margin-top: 32px; object-position: 72% center; }
 }
 
 
@@ -419,6 +419,12 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
    -------------------------------------------------------------------------- */
 
 .section--challenge { padding: 80px 0 0; }
+
+/* Detail row: four 3:4 images, one grid column each */
+.details { margin-top: 80px; }
+.details__item { margin: 0; }
+.details__item img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
+.details__item figcaption { margin-top: 12px; }
 .section--handled { padding-block: 80px; }
 
 .handled {
@@ -437,6 +443,18 @@ html { scroll-padding-top: calc(var(--frame) + var(--top) + 12px); }
 
 @media (max-width: 760px) {
   .section--challenge { padding: 100px 0 0; }
+  /* Detail row becomes a swipe strip: one image and the start of the next */
+  .details {
+    display: flex;
+    gap: 12px;
+    margin-top: 48px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .details::-webkit-scrollbar { display: none; }
+  .details__item { flex: 0 0 78%; scroll-snap-align: start; }
   .section--handled { padding-block: 100px; }
 }
 
